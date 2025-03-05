@@ -2,6 +2,20 @@ Anyone is free to copy, modify, publish, use, compile, or
 distribute this software, either in source code form or as a compiled
 binary, for any non-commercial purpose.
 
+If this software is included in commercial software or in a paid
+curriculum of any kind, attribution of this software to 
+"hells-fargo on Github" is required to be exposed to the customer
+before purchase. Hyperlinks to the source code are encouraged 
+but not required.
+
+If this software is included in free and/or open-source software,
+the URL "https://github.com/hells-fargo/chemhelper/" must be
+clearly visible on the webpage near the "Download button"
+(to be clear: a download button is any element of a webpage that 
+causes any compiled or source-code version of the software to be 
+transferred to the computer who activated it) and in the same
+directory, folder, or file as its inclusion.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
