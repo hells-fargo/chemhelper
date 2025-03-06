@@ -6,7 +6,7 @@
 #include "./ptable.h"
 extern int ptSize;
 
-// v0.5 beta
+// v0.51 beta
 
 typedef void (*module_function)();
 
@@ -27,6 +27,8 @@ void findfm() {
   char tosearch[3] = "";
   float totalfm = 0.0;
   int coeff = 1;
+
+  // cannot handle coefficients >9
 
   printf("Find formula mass of: ");
   scanf("%49s", formula);
@@ -69,6 +71,7 @@ void boyles_law() {
 
 void gaylussac() {
   puts("A/B can refer to either P or T");
+  puts("Always use kelvin!!");
   float known1 = 0;
   float known2 = 0;
   float known3 = 0;
@@ -78,7 +81,7 @@ void gaylussac() {
   scanf("%f", &known2);
   printf("known #A2: ");
   scanf("%f", &known3);
-  // haven't tested -- can't test until i get the homework
+
   printf("unknown = %f\n", (known3 / known1 * known2));
 }
 
@@ -91,8 +94,7 @@ struct module modlist[] = {
   {"ERROR!", search_fail},
   {"findfm", findfm},
   {"boyle", boyles_law},
-  {"gaylussac", gaylussac},
-  {"^^ untested", search_fail}
+  {"gaylussac", gaylussac}
   // add more as they are made
 };
 
@@ -119,7 +121,7 @@ int main() {
     for (int i = 0; i < strlen(tosearch); i++) {
       tosearch[i] = tolower(tosearch[i]);
     }
-
+    
     module_function function = (module_function)getmodule(tosearch).function;
     function(); // shoutout chatgpt bruh idk wtf is going on here
     puts("-------------------\n");
