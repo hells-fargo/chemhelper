@@ -1,7 +1,7 @@
 # Chemistry helper
 Basic program to help you with your chemistry class. 
 
-Currently in beta phase, v0.51 as of writing this.
+Currently in beta phase, v0.60 currently.
 
 * Modular
 * Simple
