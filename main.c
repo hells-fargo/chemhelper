@@ -6,7 +6,7 @@
 #include "./ptable.h"
 extern int ptSize;
 
-// v0.51 beta
+// v0.60 beta
 
 typedef void (*module_function)();
 
@@ -85,6 +85,57 @@ void gaylussac() {
   printf("unknown = %f\n", (known3 / known1 * known2));
 }
 
+void combined_gas_law() {
+  float p1 = 0;
+  float v1 = 0;
+  float t1 = 0;
+  float p2 = 0;
+  float v2 = 0;
+  float t2 = 0;
+  printf("Which variable is unknown? (P/V/T) ");
+  char which = getchar();
+  while ((getchar()) != '\n');
+  which = tolower(which);
+  switch (which) {
+    case 'p':
+      printf("P1? "); scanf(" %f", &p1);
+      printf("V1? "); scanf(" %f", &v1);
+      printf("T1? "); scanf(" %f", &t1);
+      printf("V2? "); scanf(" %f", &v2);
+      printf("T2? "); scanf(" %f", &t2);
+
+      p2 = (p1 * v1 / t1) / (v2 / t2);
+      printf("unknown = %f\n", p2);
+      break;
+    
+    case 'v':
+      printf("P1? "); scanf(" %f", &p1);
+      printf("V1? "); scanf(" %f", &v1);
+      printf("T1? "); scanf(" %f", &t1);
+      printf("P2? "); scanf(" %f", &p2);
+      printf("T2? "); scanf(" %f", &t2);
+
+      v2 = (p1 * v1 / t1) / (p2 / t2);
+      printf("unknown = %f\n", v2);
+      break;
+    
+    case 't':
+      printf("P1? "); scanf(" %f", &p1);
+      printf("V1? "); scanf(" %f", &v1);
+      printf("T1? "); scanf(" %f", &t1);
+      printf("P2? "); scanf(" %f", &p2);
+      printf("V2? "); scanf(" %f", &v2);
+
+      t2 = (p2 * v2) / (p1 * v1 * t1);
+      printf("unknown = %f\n", t2);
+      break;
+      // should be good
+
+      default:
+        printf("crashout initating in 3.. 2.. 1..");
+  }
+}
+
 struct module {
   char name[16];
   void *function;
@@ -94,7 +145,8 @@ struct module modlist[] = {
   {"ERROR!", search_fail},
   {"findfm", findfm},
   {"boyle", boyles_law},
-  {"gaylussac", gaylussac}
+  {"gaylussac", gaylussac},
+  {"combgas", combined_gas_law}
   // add more as they are made
 };
 
@@ -124,7 +176,7 @@ int main() {
     
     module_function function = (module_function)getmodule(tosearch).function;
     function(); // shoutout chatgpt bruh idk wtf is going on here
-    puts("-------------------\n");
+    puts("\n-------------------\n");
   }
   
   return 0;
