@@ -6,7 +6,7 @@
 #include "./ptable.h"
 extern int ptSize;
 
-// v0.60 beta
+// v0.61 beta
 
 typedef void (*module_function)();
 
@@ -85,7 +85,7 @@ void gaylussac() {
   printf("unknown = %f\n", (known3 / known1 * known2));
 }
 
-void combined_gas_law() {
+void combined_gas_law() { // the code should self-explain but i can document if need
   float p1 = 0;
   float v1 = 0;
   float t1 = 0;
@@ -129,7 +129,6 @@ void combined_gas_law() {
       t2 = (p2 * v2) / (p1 * v1 * t1);
       printf("unknown = %f\n", t2);
       break;
-      // should be good
 
       default:
         printf("crashout initating in 3.. 2.. 1..");
