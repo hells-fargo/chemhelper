@@ -6,7 +6,7 @@
 #include "./ptable.h"
 extern int ptSize;
 
-// v0.61 beta
+// v0.62 beta
 
 typedef void (*module_function)();
 
@@ -104,7 +104,7 @@ void combined_gas_law() { // the code should self-explain but i can document if 
       printf("V2? "); scanf(" %f", &v2);
       printf("T2? "); scanf(" %f", &t2);
 
-      p2 = (p1 * v1 / t1) / (v2 / t2);
+      p2 = (p1 * v1 * t2) / (v2 * t1);
       printf("unknown = %f\n", p2);
       break;
     
@@ -115,7 +115,7 @@ void combined_gas_law() { // the code should self-explain but i can document if 
       printf("P2? "); scanf(" %f", &p2);
       printf("T2? "); scanf(" %f", &t2);
 
-      v2 = (p1 * v1 / t1) / (p2 / t2);
+      v2 = (p1 * v1 * t2) / (p2 * t1);
       printf("unknown = %f\n", v2);
       break;
     
@@ -126,7 +126,7 @@ void combined_gas_law() { // the code should self-explain but i can document if 
       printf("P2? "); scanf(" %f", &p2);
       printf("V2? "); scanf(" %f", &v2);
 
-      t2 = (p2 * v2) / (p1 * v1 * t1);
+      t2 = (p2 * v2 * t1) / (p1 * v1);
       printf("unknown = %f\n", t2);
       break;
 
