@@ -15,3 +15,4 @@ The modules listed below are ready out of the box, no modding required.
 * boyle - finds unknown value in examples of boyle's law 
 * gaylussac - finds unknown value in examples of gay-lussac' and charles' law 
 * combgas - finds unknown value in combined gas law equations
+* idealgas - finds missing value in PV = nRT examples
