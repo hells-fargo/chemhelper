@@ -6,7 +6,7 @@
 #include "./ptable.h"
 extern int ptSize;
 
-// v0.62 beta
+// v0.7 beta
 
 typedef void (*module_function)();
 
@@ -131,7 +131,78 @@ void combined_gas_law() { // the code should self-explain but i can document if 
       break;
 
       default:
-        printf("crashout initating in 3.. 2.. 1..");
+        printf("No such variable \n");
+  }
+}
+
+void ideal_gas_law() {
+  // kelvin only
+  // PV = nRT
+  const float r_kpa = 8.314;
+  const float r_atm = 0.0821;
+  const float r_torr = 62.26;
+  float p = 0;
+  float v = 0;
+  float n = 0;
+  float r = 0;
+  float t = 0;
+  char input[5] = "";
+  printf("What is the pressure unit? ");
+  scanf(" %4s", input); 
+  for (int i = 0; i < strlen(input); i++) {
+    input[i] = tolower(input[i]);
+  }
+  if (!strcmp(input, "kpa")) { r = r_kpa; // pick correct r constant
+  } else if (!strcmp(input, "atm")) { r = r_atm; 
+  } else if (!strcmp(input, "torr")) { r = r_torr;
+  } else { printf("Not a valid unit."); return; }
+
+  printf("Which value is unknown? ");
+  while ((getchar()) != '\n');
+  char which = tolower(getchar());
+  switch (which) {
+    case 'p':
+      printf("V? "); scanf(" %f", &v);
+      printf("N? "); scanf(" %f", &n);
+      printf("T (kelvin)? "); scanf(" %f", &t);
+
+      p = (n * r * t) / v;
+      printf("P = %f", p);
+      
+      break;
+
+    case 'v':
+      printf("P? "); scanf(" %f", &p);
+      printf("N? "); scanf(" %f", &n);
+      printf("T (kelvin)? "); scanf(" %f", &t);
+
+      v = (n * r * t) / p;
+      printf("V = %f", v);
+
+      break;
+
+    case 'n':
+      printf("P? "); scanf(" %f", &p);
+      printf("V? "); scanf(" %f", &v);
+      printf("T (kelvin)? "); scanf(" %f", &t);
+
+      n = (p * v) / (r * t);
+      printf("N = %f", n);
+
+      break;
+
+    case 't':
+      printf("P? "); scanf(" %f", &p);
+      printf("V? "); scanf(" %f", &v);
+      printf("N? "); scanf(" %f", &n);
+
+      t = (p * v) / (n * r);
+      printf("T = %f", t);
+
+      break;
+
+    default:
+      printf("No such variable\n");
   }
 }
 
@@ -145,7 +216,8 @@ struct module modlist[] = {
   {"findfm", findfm},
   {"boyle", boyles_law},
   {"gaylussac", gaylussac},
-  {"combgas", combined_gas_law}
+  {"combgas", combined_gas_law},
+  {"idealgas", ideal_gas_law}
   // add more as they are made
 };
 
